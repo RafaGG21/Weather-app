@@ -1,0 +1,61 @@
+<form class="d-flex justify-content-evenly mt-3" (ngSubmit)="nuevaCiudad()">
+
+  <input type="text" class="form-control" id="ciudad" placeholder="Añade una ciudad"
+
+         name="ciudad" [(ngModel)]="otraCiudad">
+
+  <button class="btn btn-primary ms-2">Enviar</button>
+
+</form>
+
+
+
+<div class="d-flex justify-content-evenly mt-3">
+
+  <div class="form-check form-switch">
+
+    <input class="form-check-input" type="checkbox" id="carrusel" [(ngModel)]="carrusel">
+
+    <label class="form-check-label" for="carrusel">Carrusel</label>
+
+  </div>
+
+  <div class="form-check form-switch">
+
+    <input class="form-check-input" type="checkbox" id="tarjetas" [(ngModel)]="tarjetas">
+
+    <label class="form-check-label" for="tarjetas">Tarjetas</label>
+
+  </div>
+
+</div>
+
+
+
+<input type="range" class="form-range mt-3" id="intervalo"
+
+       [(ngModel)]="intervalo" min="1000" max="10000" step="1000" *ngIf="carrusel">
+
+
+
+<ngb-carousel class="carousel-dark" [interval]="intervalo" *ngIf="carrusel">
+
+  <ng-template ngbSlide *ngFor="let tiempo of tiempos">
+
+    <app-ciudad [tiempo]="tiempo"></app-ciudad>
+
+  </ng-template>
+
+</ngb-carousel>
+
+
+
+<div class="row mb-3" *ngIf="tarjetas">
+
+  <div class="col" *ngFor="let tiempo of tiempos">
+
+    <app-ciudad [tiempo]="tiempo"></app-ciudad>
+
+  </div>
+
+</div>

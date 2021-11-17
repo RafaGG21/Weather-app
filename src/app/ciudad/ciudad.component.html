@@ -1,0 +1,31 @@
+<div class="card text-center mt-2">
+
+  <div class="card-header bg-warning h3">
+
+    {{tiempo.name}}
+
+  </div>
+
+  <div class="card-body">
+
+    <h5 class="card-title">{{tiempo.main.temp}} &deg;C / Máx: {{tiempo.main.temp_max}} / Mín:
+
+      {{tiempo.main.temp_min}}
+
+    </h5>
+
+    <p class="card-text">{{tiempo.weather[0].description | filtroMayuscula}}</p>
+
+    <a href="https://maps.google.com/maps?&z=15&t=k&q={{tiempo.coord.lat}} {{tiempo.coord.lon}}" target='_blank'
+
+      class="btn btn-primary">Abrir el mapa</a>
+
+  </div>
+
+  <div class="card-footer bg-primary p-0">
+
+    <img src="https://openweathermap.org/img/wn/{{tiempo.weather[0].icon}}@2x.png">
+
+  </div>
+
+</div>
